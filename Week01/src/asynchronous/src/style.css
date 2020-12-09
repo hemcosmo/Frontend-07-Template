@@ -1,0 +1,74 @@
+@font-face {
+  font-family: test;
+  src: url(./font/DinkieBitmap-9pxDemo.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #adefd1;
+}
+
+.container {
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background-color: #00203f;
+}
+
+p {
+  margin-bottom: 10px;
+  font-family: test;
+  font-size: 13px;
+  letter-spacing: .2em;
+  color: #adefd1;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.circle::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border-right: 3.5px solid rgba(255, 255, 255, .6);
+  border-radius: 50%;
+}
+
+.close {
+  filter: grayscale(1);
+}
+
+.red {
+  background-color: #f05454;
+  box-shadow: 0 0 20px 5px #f05454;
+}
+
+.green {
+  background-color: #adce74;
+  box-shadow: 0 0 20px 5px #adce74;
+}
+
+.yellow {
+  background-color: #fecd1a;
+  box-shadow: 0 0 20px 5px #fecd1a;
+}
