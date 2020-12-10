@@ -6,6 +6,30 @@ let root = document.getElementById('root')
 let mousedown = false
 let clear = false
 
+class Sorted {
+  constructor(data, compare) {
+    this.data = data
+    this.compare = compare || ((a, b) => a - b)
+  }
+  take() {
+    if(!this.data.length) return
+    let min = this.data[0]
+    let minIndex = 0
+    for(let i = 1; i < this.data.length; i++) {
+      if(this.compare(this.data[i], min) < 0) {
+        min = this.data[i]
+        minIndex = i
+      }      
+    }
+    this.data[minIndex] = this.data[this.data.length - 1]
+    this.data.pop()
+    return min
+  }
+  give(v) {
+    this.data.push(v)
+  }
+}
+
 document.addEventListener('mousedown', e => {
   mousedown = true
   clear = (e.buttons === 2)
@@ -52,7 +76,9 @@ for(let i = 0; i < MAP_SIZE; i++) {
 
 const findPath = async (map, start, end) => {
   let table = Object.create(map)
-  let queue = [start]
+  let queue = new Sorted([start], (a, b) => distance(a) - distance(b))
+
+  const distance = point => (point[0] - end[0]) ** 2 - (point[1] - end[1]) ** 2 
 
   const insert = async (x, y, prev) => {
     if(x < 0 || x > 99 || y < 0 || y > 99)
@@ -60,17 +86,19 @@ const findPath = async (map, start, end) => {
     if(table[y * MAP_SIZE + x]) return
     // await sleep(30)
     table[y * MAP_SIZE + x] = prev
+    await sleep(30)
     root.children[y * MAP_SIZE + x].style.backgroundColor = '#adefd1'
-    queue.push([x, y])
+    queue.give([x, y])
   }
 
-  while(queue.length) {
-    let [x, y] = queue.shift()
+  while(queue.data.length) {
+    let [x, y] = queue.take()
     if(x === end[0] && y === end[1]) {
       let path = []
       while(x !== start[0] || y !== start[1]) {
-        path.push(map[y * MAP_SIZE + x])
+        path.push(map[y * MAP_SIZE + x]);
         [x, y] = table[y * MAP_SIZE + x]
+        await sleep(30)
         root.children[y * MAP_SIZE + x].style.backgroundColor = '#00203f'
       }
       return path
