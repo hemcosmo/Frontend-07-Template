@@ -1,5 +1,5 @@
-const MAP_SIZE = 100
-const colors = ['#e74c3c', '#8e44ad', '#3498db', '#e67e22', '#2ecc71']
+const MAP_SIZE = 50
+const colors = ['#46b5d1']
 
 let map = localStorage['map'] ? JSON.parse(localStorage['map']) : Array(10000).fill(0)
 let root = document.getElementById('root')
@@ -81,13 +81,12 @@ const findPath = async (map, start, end) => {
   const distance = point => (point[0] - end[0]) ** 2 - (point[1] - end[1]) ** 2 
 
   const insert = async (x, y, prev) => {
-    if(x < 0 || x > 99 || y < 0 || y > 99)
+    if(x < 0 || x >= MAP_SIZE || y < 0 || y >= MAP_SIZE)
       return
     if(table[y * MAP_SIZE + x]) return
-    // await sleep(30)
     table[y * MAP_SIZE + x] = prev
     await sleep(30)
-    root.children[y * MAP_SIZE + x].style.backgroundColor = '#adefd1'
+    root.children[y * MAP_SIZE + x].style.backgroundColor = '#a7d129'
     queue.give([x, y])
   }
 
@@ -99,7 +98,7 @@ const findPath = async (map, start, end) => {
         path.push(map[y * MAP_SIZE + x]);
         [x, y] = table[y * MAP_SIZE + x]
         await sleep(30)
-        root.children[y * MAP_SIZE + x].style.backgroundColor = '#00203f'
+        root.children[y * MAP_SIZE + x].style.backgroundColor = '#f60'
       }
       return path
     }

@@ -20,9 +20,11 @@ body {
 }
 
 .grid {
-  width: 4px;
-  height: 4px;
-  margin: 1px;
+  width: 9px;
+  height: 9px;
+  margin: 1.5px;
   background-color: #1d1d1d;
   box-shadow: 0 0 .5px #000;
+  border-radius: 50%;
+  transition: 1s ease;
 }
