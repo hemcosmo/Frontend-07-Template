@@ -1,5 +1,5 @@
 const MAP_SIZE = 50
-const colors = ['#46b5d1']
+const colors = ['#ffd460']
 
 let map = localStorage['map'] ? JSON.parse(localStorage['map']) : Array(10000).fill(0)
 let root = document.getElementById('root')
@@ -69,16 +69,16 @@ for(let i = 0; i < MAP_SIZE; i++) {
   }
 }
 
-// window.onbeforeunload = () => {
-//   localStorage['map'] = JSON.stringify(map)
-//   return ''
-// }
+window.onbeforeunload = () => {
+  localStorage['map'] = JSON.stringify(map)
+  return ''
+}
 
 const findPath = async (map, start, end) => {
   let table = Object.create(map)
   let queue = new Sorted([start], (a, b) => distance(a) - distance(b))
 
-  const distance = point => (point[0] - end[0]) ** 2 - (point[1] - end[1]) ** 2 
+  const distance = point => Math.sqrt((point[0] - end[0]) ** 2 + (point[1] - end[1]) ** 2) 
 
   const insert = async (x, y, prev) => {
     if(x < 0 || x >= MAP_SIZE || y < 0 || y >= MAP_SIZE)
@@ -86,7 +86,7 @@ const findPath = async (map, start, end) => {
     if(table[y * MAP_SIZE + x]) return
     table[y * MAP_SIZE + x] = prev
     await sleep(30)
-    root.children[y * MAP_SIZE + x].style.backgroundColor = '#a7d129'
+    root.children[y * MAP_SIZE + x].style.backgroundColor = '#a6a6a4'
     queue.give([x, y])
   }
 
