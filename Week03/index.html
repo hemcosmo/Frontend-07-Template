@@ -3,11 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>AST 🎄</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.1/styles/shades-of-purple.min.css">
   <link rel="stylesheet" href="./src/style.css">
+  <script defer src="https://unpkg.com/@highlightjs/cdn-assets@10.4.1/highlight.min.js"></script>
+  <script
+    defer 
+    charset="UTF-8"
+    src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/languages/json.min.js"
+  >
+  </script>
   <script defer src="./src/app.js"></script>
+  <script defer src="./src/test.js"></script>
 </head>
 <body>
-  <div class="root" id="root"></div>
+  <div class="root" id="root">
+    <input type="text" id="input" placeholder="input here">
+    <button id="btn"></button>
+    <pre><code class="json" id="preview"></code></pre>
+  </div>
 </body>
 </html>

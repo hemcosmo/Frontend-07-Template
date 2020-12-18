@@ -4,6 +4,54 @@
   box-sizing: border-box;
 }
 
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2d2b57;
+}
+
 .root {
-  
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.root input {
+  width: 100px;
+  height: 30px;
+  padding-left: 10px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 15px;
+  color: #f8d000;
+  background-color: #2d2b57;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.root button {
+  padding: 10px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 15px;
+  color: #2d2b57;
+  background-color: #f8d000;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.root pre {
+  height: 400px;
+  overflow: auto;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.root pre::-webkit-scrollbar {
+  display: none;
 }

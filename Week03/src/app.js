@@ -1,8 +1,6 @@
 const regexp = /([\d\.]+)|(\+)|(\-)|(\*)|(\/)|([\s\t]+)|([\r\n]+)/g
 const dictionary = ['num', '+', '-', '*', '/', 'space', 'newline']
 
-let src = []
-
 function* tokenize(exp) {
   let map, lastIndex = 0
   while(1) {
@@ -61,7 +59,7 @@ const multiplicative = src => {
       node.children.push(src.shift())
       node.children.push(src.shift())
       node.children.push(src.shift())
-  
+
       src.unshift(node)
       return multiplicative(src)
     }
@@ -121,6 +119,7 @@ const additive = src => {
   return additive(src)
 }
 
+// 自顶向下
 const expression = src => {
   if(src[0].type === 'additive' && src[1]?.type === 'EOF') {
     let node = {
@@ -136,9 +135,18 @@ const expression = src => {
   return expression(src)
 }
 
-for(const token of tokenize('25 + 2 * 6')) {
-  if(token.type !== 'space' && token.type !== 'newline')
-    src.push(token)
+let s = []
+const createSlice = x =>{
+  for(const token of tokenize(x)) {
+    if(token.type !== 'space' && token.type !== 'newline')
+      s.push(token)
+  }
 }
 
-console.log(expression(src))
+hljs.initHighlightingOnLoad()
+
+let input = '1 + 2 * 6'
+createSlice(input)
+
+document.getElementById('preview').innerHTML = JSON.stringify(expression(s), null, 2)
+
