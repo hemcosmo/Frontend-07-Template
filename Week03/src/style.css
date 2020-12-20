@@ -5,28 +5,25 @@
 }
 
 body {
+  font-family: monospace;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2d2b57;
 }
 
 .root {
-  width: 50%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .root input {
-  width: 100px;
   height: 30px;
   padding-left: 10px;
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: monospace;
   font-size: 15px;
-  color: #f8d000;
-  background-color: #2d2b57;
   border: none;
   outline: none;
   border-radius: 5px;
@@ -35,7 +32,6 @@ body {
 
 .root button {
   padding: 10px;
-  font-family: 'Ubuntu Mono', monospace;
   font-size: 15px;
   color: #2d2b57;
   background-color: #f8d000;
@@ -48,10 +44,41 @@ body {
 .root pre {
   height: 400px;
   overflow: auto;
-  border-radius: 5px;
+  border-bottom-right-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .root pre::-webkit-scrollbar {
   display: none;
+}
+
+.a {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  width: 30%;
+}
+
+.b {
+  width: 70%;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
+
+#board {
+  padding: 10px 30px;
+  height: 400px;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 1.95px;
+  border-right: 1px dashed rgba(0, 0, 0, .15);
+}
+
+#board::-webkit-scrollbar {
+  display: none;
+}
+
+#board > p {
+  color: #2d2b57;
+  margin: 10px 0;
 }

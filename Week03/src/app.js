@@ -1,5 +1,8 @@
+// script scope variables
 const regexp = /([\d\.]+)|(\+)|(\-)|(\*)|(\/)|([\s\t]+)|([\r\n]+)/g
 const dictionary = ['num', '+', '-', '*', '/', 'space', 'newline']
+let input = '2 + 6' // default expression
+let t = [] // tokens array
 
 function* tokenize(exp) {
   let map, lastIndex = 0
@@ -119,7 +122,7 @@ const additive = src => {
   return additive(src)
 }
 
-// 自顶向下
+// from top to bottom
 const expression = src => {
   if(src[0].type === 'additive' && src[1]?.type === 'EOF') {
     let node = {
@@ -135,18 +138,55 @@ const expression = src => {
   return expression(src)
 }
 
-let s = []
-const createSlice = x =>{
-  for(const token of tokenize(x)) {
+// convert string to tokens array
+const convert = (s, t) =>{
+  for(const token of tokenize(s)) {
     if(token.type !== 'space' && token.type !== 'newline')
-      s.push(token)
+      t.push(token)
   }
 }
 
-hljs.initHighlightingOnLoad()
+// manipulate ast node
+const renderBulletinBoard = (self, parent, index) => {
+  const p = document.createElement('p')
+  p.innerText = `👶🏽 ${self.type} | 🧔🏽 ${parent.type} | 🏆 ${index}`
+  document.getElementById('board').appendChild(p)
+}
 
-let input = '1 + 2 * 6'
-createSlice(input)
+// traverse ast
+const traverse = async (o, p, idx, fn) => {
+  fn(o, p, idx)
+  await setTimeout(1)
 
-document.getElementById('preview').innerHTML = JSON.stringify(expression(s), null, 2)
+  for (const key in o) {
+    const prop = o[key]
+    if (Array.isArray(prop)) {
+      for (let i = 0; i < prop.length; i++) {
+        traverse(prop[i], o, i, fn)// record index and parent node
+      }
+    }
+  }
+}
 
+// add listener to button
+document.getElementById('btn').onclick = () => {
+  let t = [] // shadowing t
+  input = document.getElementById('input').value
+  if(input) {
+    convert(input, t)
+    let ast = expression(t)
+    document.getElementById('preview').innerText = JSON.stringify(ast, null, 2)
+    hljs.highlightBlock(document.querySelector('pre code'))
+    document.getElementById('board').innerHTML = null // clear board
+    traverse(ast, 'program', 0, renderBulletinBoard)
+  }
+}
+
+// initialize
+{
+  hljs.initHighlightingOnLoad()
+  convert(input, t)
+  let ast = expression(t) // private ast
+  document.getElementById('preview').innerText = JSON.stringify(ast, null, 2)
+  traverse(ast, 'program', 0, renderBulletinBoard)
+}
