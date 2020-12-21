@@ -19,6 +19,8 @@ html 语法分析 stack 处理 LR(0)
 
 ## 字典树 trie
 
+prefix tree(前缀树)
+
 哈希树的一种特例
 
 best data structure to store(string) : map or object
