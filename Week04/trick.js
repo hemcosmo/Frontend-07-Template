@@ -11,12 +11,3 @@
 // y = +"26";
 
 // Math.floor(2.6) equals to ~~2.6
-
-function debounce(callback, duration) {
-  let timer;
-
-  return function (...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => callback(args), duration);
-  };
-}

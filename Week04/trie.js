@@ -1,4 +1,4 @@
-const $ = Symbol("$"); // symbol: cant repeat
+const $ = Symbol("$"); // symbol: unique value
 
 // use map to store values
 // const Node = function () {
@@ -17,7 +17,7 @@ class Trie {
   insert(word) {
     let node = this.root;
     for (let i = 0; i < word.length; i += 1) {
-      // if child not exsit, create child
+      // create child if child not exsit
       if (!node[word[i]]) node[word[i]] = Object.create(null);
       // move to next level
       node = node[word[i]];
@@ -37,15 +37,15 @@ class Trie {
         max = node[$];
         maxWord = word;
       }
-      Object.keys(node).forEach((p) => {
-        visit(node[p], word + p);
+      Object.keys(node).forEach((c) => {
+        visit(node[c], word + c);
       });
     };
     visit(this.root, "");
     return { maxWord, max };
   }
 
-  // check specific word if exsit
+  // check specified word if exsit
   search(word) {
     let node = this.root;
 
@@ -57,25 +57,61 @@ class Trie {
       // eslint-disable-next-line no-param-reassign
       word = word.substr(1);
     }
-    return node[$];
+    return !!Object.getOwnPropertySymbols(node[word]).length;
   }
 }
 
 // generate random word
-function randomWord(length) {
-  let s = "";
-  for (let i = 0; i < length; i += 1) {
-    s += String.fromCharCode(Math.random() * 26 + "a".charCodeAt(0));
-  }
-  return s;
-}
+// function randomWord(length) {
+//   let s = "";
+//   for (let i = 0; i < length; i += 1) {
+//     s += String.fromCharCode(Math.random() * 26 + "a".charCodeAt(0));
+//   }
+//   return s;
+// }
 
 const trie = new Trie();
 
-for (let i = 0; i < 10000; i += 1) {
-  trie.insert(randomWord(4));
-}
+// for (let i = 0; i < 10000; i += 1) {
+//   trie.insert(randomWord(4));
+// }
 
 // const { maxWord, max } = trie.most();
 // eslint-disable-next-line no-console
 // console.log(maxWord, max);
+
+hljs.initHighlightingOnLoad();
+
+// insert
+const i = () => {
+  const k = document.getElementById("input").value;
+  trie.insert(k);
+  document.querySelector("#preview").innerText = JSON.stringify(trie, null, 2);
+  hljs.highlightBlock(document.querySelector("#preview"));
+};
+
+// most
+const m = () => {
+  const o = trie.most();
+  Object.keys(o).forEach((key) => {
+    document.getElementById("b").innerHTML += `<p>${key} : ${o[key]}</p>`;
+  });
+};
+
+// search
+const s = () => {
+  const k = document.getElementById("input").value;
+  if (k)
+    document.getElementById("b").innerHTML += `<p>${k} : ${trie.search(k)}</p>`;
+};
+
+const toggle = () => {
+  const s = document.querySelector(".sidebar");
+  if (!s.classList.contains("hide")) {
+    s.classList.add("hide");
+    document.querySelector(".controller").innerText = "👉";
+  } else {
+    s.classList.remove("hide");
+    document.querySelector(".controller").innerText = "👈";
+  }
+};

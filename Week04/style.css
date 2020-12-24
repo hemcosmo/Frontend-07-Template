@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  height: 100vh;
+  display: flex;
+}
+
+.main {
+  width: 60%;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#input {
+  margin: 10px;
+  width: 165px;
+  height: 20px;
+  padding-left: 10px;
+  font-family: monospace;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.btns {
+  margin: 10px;
+  width: 200px;
+}
+
+.btns > a {
+  width: 20px;
+  height: 10px;
+  font-family: monospace;
+  padding: 3px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  cursor: pointer;
+  color: #1e5f74;
+}
+
+.btns > a:active {
+  box-shadow: none;
+}
+
+.board {
+  height: 400px;
+  width: 50%;
+  overflow: auto;
+  border-right: 1px dashed rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.15) 0 1.95px;
+}
+
+.board::-webkit-scrollbar {
+  display: none;
+}
+
+.a {
+  width: 70%;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
+
+.b {
+  width: 50%;
+  padding: 10px 30px;
+  height: 400px;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.b > p {
+  color: #2d2b57;
+  margin: 10px 0;
+}
+
+.sidebar {
+  height: 100vh;
+  width: 100px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.sidebar ul > li {
+  text-align: center;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.sidebar ul > li:hover {
+  transform: translateX(3px);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.controller {
+  cursor: pointer;
+  font-size: 20px;
+  height: 35px;
+  width: 35px;
+}

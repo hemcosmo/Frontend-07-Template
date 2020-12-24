@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trie 🌳</title>
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.1/styles/github-gist.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://unpkg.com/@highlightjs/cdn-assets@10.4.1/highlight.min.js"></script>
+  <script defer src="trie.js"></script>
+</head>
+
+<body>
+  <div class="sidebar hide">
+    <ul>
+      <li>trie</li>
+      <li>kmp</li>
+      <li>wildcard</li>
+    </ul>
+  </div>
+  <a class="controller" onclick="toggle()">👉</a>
+  <div class="main">
+    <div class="operatingPanel">
+      <input type="search" name="" id="input">
+      <div class="btns">
+        <a class="btn" onclick="i()">insert</a>
+        <a class="btn" onclick="s()">search</a>
+        <a class="btn" onclick="m()">most</a>
+      </div>
+    </div>
+    <div class="a">
+      <pre class="board"><code class="json" id="preview"></code></pre>
+      <div class="b" id="b"></div>
+    </div>
+  </div>
+</body>
+
+</html>
