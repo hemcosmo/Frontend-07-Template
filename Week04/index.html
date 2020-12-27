@@ -1,54 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trie 🌳</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@highlightjs/cdn-assets@10.4.1/styles/github-gist.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      defer
+      src="https://unpkg.com/@highlightjs/cdn-assets@10.4.1/highlight.min.js"
+    ></script>
+    <script defer src="trie.js"></script>
+    <script defer src="kmp.js"></script>
+    <script defer src="wildcard.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-  <script defer src="kmp.js"></script>
-  <style>
-    body {
-      min-height: calc(100vh - 16px);
-      background-color: #fafafa;
-      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    p {
-      text-align: center;
-      font-family: monospace;
-      font-size: 20px;
-    }
-
-    .content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="row">
-    <p>🔴 debouncing</p>
-
-    <div class="content">
-      <img src="./assets/debounce-coding.svg" alt="">
-      <img src="./assets/debounce-drawing.svg" alt="">
+  <body>
+    <div class="sidebar hide">
+      <ul>
+        <li data-name="trie">trie</li>
+        <li data-name="kmp">kmp</li>
+        <li data-name="wildcard">wildcard</li>
+      </ul>
     </div>
-  </div>
-
-  <div class="row">
-    <p>🔵 symbol</p>
-
-    <div class="content">
-      <img src="./assets/symbol-coding.svg" alt="">
-      <img src="./assets/symbol-drawing.svg" alt="">
+    <a class="controller" onclick="toggle()">👉</a>
+    <div class="trie main">
+      <div class="operatingPanel">
+        <input type="search" id="input" class="input" />
+        <div class="btns">
+          <a class="btn" onclick="i()">insert</a>
+          <a class="btn" onclick="s()">search</a>
+          <a class="btn" onclick="m()">most</a>
+        </div>
+      </div>
+      <div class="a">
+        <pre class="board"><code class="json" id="preview"></code></pre>
+        <div class="b" id="b"></div>
+      </div>
     </div>
-  </div>
-</body>
 
+    <div class="kmp main hide">
+      <div class="operatingPanel">
+        <input
+          id="source"
+          type="search"
+          class="input"
+          placeholder="source..."
+        />
+        <input
+          id="pattern"
+          type="search"
+          class="input"
+          placeholder="pattern..."
+        />
+        <a class="btn" onclick="match()">match</a>
+      </div>
+      <div class="a">
+        <div id="p" style="width: 70%" class="b" id="b"></div>
+      </div>
+    </div>
+
+    <div class="wildcard main hide">
+      <div class="operatingPanel">
+        <input id="ws" type="search" class="input" placeholder="source..." />
+        <input id="wp" type="search" class="input" placeholder="pattern..." />
+        <a class="btn" onclick="wc()">match</a>
+      </div>
+      <p style="font-size: 26px" id="result"></p>
+    </div>
+
+    <script>
+      document.querySelectorAll('.sidebar ul li').forEach((x) => {
+        x.addEventListener('click', () => {
+          navigator(x.dataset.name)
+        })
+      })
+
+      const navigator = (router) => {
+        document.querySelectorAll('.main').forEach((x) => {
+          x.classList.add('hide')
+        })
+
+        document.querySelector(`.${router}`).classList.remove('hide')
+      }
+    </script>
+  </body>
 </html>

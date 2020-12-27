@@ -1,46 +1,54 @@
 function kmp(src, pattern) {
-  const table = new Array(pattern.length).fill(0);
+  const table = new Array(pattern.length).fill(0)
   {
-    let i = 1; // index
-    let j = 0; // count
+    let i = 1 // index
+    let j = 0 // count
 
     while (i < pattern.length) {
       if (pattern[i] === pattern[j]) {
-        j += 1;
-        // if (i === pattern.length - 1) {
-        //   table[i] = j;
-        //   break;
-        // }
-        i += 1;
-        table[i] = j;
-      } else if (j > 0) j = table[j];
+        j += 1
+        table[i] = j
+        i += 1
+      } else if (j > 0) j = table[j - 1]
       else {
-        i += 1;
+        table[i] = 0
+        i += 1
       }
     }
   }
 
   {
-    let i = 0; // source
-    let j = 0; // pattern
+    let i = 0 // source
+    let j = 0 // pattern
+    let res = [] // record
 
     while (i < src.length) {
       if (pattern[j] === src[i]) {
-        i += 1;
-        j += 1;
-      } else if (j) j = table[j - 1];
-      else {
-        i += 1;
+        res.push(i)
+        i += 1
+        j += 1
       }
       // base case
       if (j === pattern.length) {
-        return true;
+        return res
+      }
+      if (i < src.length && pattern[j] !== src[i]) {
+        if (j) {
+          j = table[j - 1]
+          res = res.slice(res.length - j)
+        } else {
+          i += 1
+        }
       }
     }
-    return false;
+    return 'no matching 👀'
   }
 }
 
-console.log(kmp("mississippi", "issip"));
-// assignment record position
-// leetcode 28 208
+const match = () => {
+  const src = document.getElementById('source').value
+  const pattern = document.getElementById('pattern').value
+  const previewer = document.getElementById('p')
+
+  previewer.innerHTML = `<p>index: ${kmp(src, pattern)}</p>`
+}

@@ -19,7 +19,7 @@ body {
   align-items: center;
 }
 
-#input {
+.input {
   margin: 10px;
   width: 165px;
   height: 20px;
@@ -37,7 +37,7 @@ body {
   width: 200px;
 }
 
-.btns > a {
+.btn {
   width: 20px;
   height: 10px;
   font-family: monospace;
@@ -48,7 +48,7 @@ body {
   color: #1e5f74;
 }
 
-.btns > a:active {
+.btn:active {
   box-shadow: none;
 }
 
@@ -111,4 +111,10 @@ body {
   font-size: 20px;
   height: 35px;
   width: 35px;
+}
+
+#p > p {
+  font-size: 16px;
+  color: #2d2b57;
+  margin: 10px 0;
 }
