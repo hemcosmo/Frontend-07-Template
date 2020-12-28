@@ -1,3 +1,4 @@
+// TODO
 const kmpWithQuestionMark = (src, pattern) => {
   const table = new Array(pattern.length).fill(0)
   {
@@ -29,7 +30,6 @@ const kmpWithQuestionMark = (src, pattern) => {
         j += 1
       }
       if (j === pattern.length) {
-        console.log(ufo)
         return ufo[ufo.length - 1]
       }
       if (i < src.length && pattern[j] !== src[i]) {
@@ -82,23 +82,21 @@ function find(src, pattern) {
 
   for (let i = 0; i < startCount - 1; i += 1) {
     p += 1 // * next character
-    console.log(p)
     let subPattern = ''
     while (pattern[p] !== '*') {
       subPattern += pattern[p]
       p += 1 // substring index
-      console.log(p)
     }
     // ? match single character
-    // const regexp = new RegExp(subPattern.replace(/\?/g, '[\\s\\S]'), 'g')
-    // regexp.lastIndex = lastIndex
-    // if (!regexp.exec(src)) return false
-    // lastIndex = regexp.lastIndex
-    console.log(kmpWithQuestionMark(src.slice(lastIndex), subPattern))
-    const ufo = kmpWithQuestionMark(src.slice(lastIndex), subPattern)
-    if (!ufo) return false
-    lastIndex += ufo + 1
-    console.log(lastIndex)
+    const regexp = new RegExp(subPattern.replace(/\?/g, '[\\s\\S]'), 'g')
+    regexp.lastIndex = lastIndex
+    if (!regexp.exec(src)) return false
+    lastIndex = regexp.lastIndex
+
+    // TODO
+    // const ufo = kmpWithQuestionMark(src.slice(lastIndex), subPattern)
+    // if (!ufo) return false
+    // lastIndex += ufo + 1
   }
 
   if (lastIndex === src.length && p < pattern.length) return false
