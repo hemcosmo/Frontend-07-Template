@@ -19,7 +19,7 @@ palette.addEventListener('mousedown', (e) => {
 
   const move = (e) => {
     const range = getNearest(e.clientX, e.clientY)
-    const x = range.startContainer.wholeText.trim().split('').slice(-1)
+    const x = range.startContainer.wholeText.trim().slice(-1)
     debouncing(() => getRes(x), 260)()
     range.insertNode(palette)
 
