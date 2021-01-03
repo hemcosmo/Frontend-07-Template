@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍳</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #e8eae6;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='46' height='46' fill-opacity='0.6' fill='%23cdd0cb'/%3E%3C/svg%3E");
+      }
+
+      input[type='range'] {
+        appearance: none;
+        position: relative;
+        padding: 4px;
+        border-radius: 15px;
+        background-color: #00203f;
+        outline: none;
+      }
+
+      input[type='range']::-webkit-slider-thumb {
+        appearance: none;
+        position: relative;
+        width: 15px;
+        height: 15px;
+        background-color: #adefd1;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    </style>
+
+    <script defer src="proxy.js"></script>
+    <script defer src="range.js"></script>
+  </head>
+  <body>
+    <div style="font-size: 40px; margin-bottom: 30px">🎨</div>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: fit-content;
+        margin-bottom: 50px;
+      "
+    >
+      <input id="r" type="range" max="255" value="255" />
+      <input id="g" type="range" max="255" value="102" />
+      <input id="b" type="range" max="255" value="0" />
+    </div>
+    <div style="color: #00203f; font-size: 18px" id="container">
+      0 1 2 3 4 5 6 7 8 9 -
+    </div>
+    <div
+      id="palette"
+      style="
+        display: inline-flex;
+        width: 20px;
+        height: 20px;
+        border-radius: 50% 50% 50% 0;
+        transform: translateY(-10px);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        color: #e8eae6;
+        font-weight: 800;
+      "
+    >
+      ~
+    </div>
+    <i style="font-size: 20px; font-weight: 700" id="res">- 两</i>
+  </body>
+</html>
