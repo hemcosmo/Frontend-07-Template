@@ -1,3 +1,14 @@
+# 目录
+
+- [Proxy](#Proxy)
+
+  - [一些用例](#一些用例)
+  - [双向数据绑定](#双向数据绑定)
+
+- [Range](#Range)
+  - [创建与设置](#创建与设置)
+  - [鼠标事件拖拽 vs 拖拽 API](#鼠标事件拖拽-vs-拖拽-API)
+
 # Proxy
 
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FIEf1KAcK6A8%2Fmaxresdefault.jpg&f=1&nofb=1" alt="es6" width="200" />
@@ -40,7 +51,7 @@ const handler = {
 
 # Range
 
-[doc](https://developer.mozilla.org/en-US/docs/Web/API/Range)
+[docs](https://developer.mozilla.org/en-US/docs/Web/API/Range)
 
 一个节点的起始边界点到终止边界点的范围
 
@@ -64,3 +75,35 @@ const handler = {
 `insertNode` 起点处插入节点
 
 `getBoundingClientRect` 返回一个 ClientRect 对象的列表
+
+## 鼠标事件拖拽 vs 拖放 API
+
+[docs](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent)
+
+drag events 实则继承自 mouse events
+
+- 添加属性使得元素可以被拖拽
+
+```html
+<div id="box" draggable>📦</div>
+```
+
+- 添加事件监听(8 个事件可用)
+
+```html
+<div id="box" ondrag="handler(e)">📦</div>
+<!-- or -->
+<script>
+  document.getElementById('box').addEventListener('drag', handler)
+</script>
+```
+
+注意 handler 中需要调用 `preventDefault`
+
+- `dataTransfer` 对象中的 `files: FileList`
+
+拖拽文件到合法区域会追加进 `files`
+
+- 小总结
+
+拖放 API 可以使我们在简单场景下处理更便捷, 也提供了系统文件拖拽到浏览器窗口的能力. 但拖放 API 还是存在一些不足之处, 个人感觉如果是对拖拽自由度要求高或者是对拖拽区域有限制的场景下用 mouse event 可能是更好的选择.

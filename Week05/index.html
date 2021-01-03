@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🍳</title>
+    <title>有色秤砣</title>
     <style>
       body {
         margin: 0;
@@ -12,8 +12,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background-color: #e8eae6;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='46' height='46' fill-opacity='0.6' fill='%23cdd0cb'/%3E%3C/svg%3E");
+        color: #00203f;
       }
 
       input[type='range'] {
@@ -36,11 +35,13 @@
       }
     </style>
 
-    <script defer src="proxy.js"></script>
-    <script defer src="range.js"></script>
+    <script defer src="reactive.js"></script>
+    <script defer src="dnd.js"></script>
   </head>
   <body>
-    <div style="font-size: 40px; margin-bottom: 30px">🎨</div>
+    <h1 style="font-size: 26px; margin-bottom: 30px">
+      有色秤砣
+    </h1>
     <div
       style="
         display: flex;
@@ -50,17 +51,17 @@
         margin-bottom: 50px;
       "
     >
-      <input id="r" type="range" max="255" value="255" />
-      <input id="g" type="range" max="255" value="102" />
-      <input id="b" type="range" max="255" value="0" />
+      <input id="r" type="range" max="255" value="173" />
+      <input id="g" type="range" max="255" value="239" />
+      <input id="b" type="range" max="255" value="209" />
     </div>
-    <div style="color: #00203f; font-size: 18px" id="container">
-      0 1 2 3 4 5 6 7 8 9 -
+    <div style="font-size: 18px; letter-spacing: 6px;" id="container">
+      0123456789-
     </div>
     <div
       id="palette"
       style="
-        display: inline-flex;
+        display: inline-block;
         width: 20px;
         height: 20px;
         border-radius: 50% 50% 50% 0;
@@ -69,14 +70,10 @@
           rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
           rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         cursor: pointer;
-        justify-content: center;
-        align-items: center;
-        color: #e8eae6;
-        font-weight: 800;
       "
-    >
-      ~
-    </div>
-    <i style="font-size: 20px; font-weight: 700" id="res">- 两</i>
+    ></div>
+    <i style="font-size: 20px; font-weight: 700" id="res"></p>
+      - 两
+    </i>
   </body>
 </html>
