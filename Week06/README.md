@@ -1,3 +1,17 @@
+## Table of Contents
+
+- [语言](#语言)
+
+- [乔姆斯基谱系](#Chomsky-hierarchy)
+
+- [BNF](#BNFBackus-Naur-Form)
+
+- [形式语言的分类](#形式语言的分类)
+
+- [命令式语言一般设计方式](#命令式语言一般设计方式)
+
+- [基本类型](#基本类型)
+
 ## 语言
 
 > 是一类复合交流系统, 某一门语言则是这类系统的具体例子. 以`Rousseau`为代表的一些思想家认为语言源自情绪, 而`Kant`认为其源于理性和逻辑的思辨.
@@ -18,12 +32,12 @@
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Chomsky-hierarchy.svg/190px-Chomsky-hierarchy.svg.png)
 
-| Grammar | Languages | Automaton |
-| - | - | - |
-| Type-0 | recursively enumerable | Turing machine |
-| Type-1 | context-sensitive | Linear-bounded non-deterministic Turing machine |
-| Type-2 | context-free | Non-deterministic pushdown automaton |
-| Type-3 | regular | Finite state automaton |
+| Grammar | Languages              | Automaton                                       |
+| ------- | ---------------------- | ----------------------------------------------- |
+| Type-0  | recursively enumerable | Turing machine                                  |
+| Type-1  | context-sensitive      | Linear-bounded non-deterministic Turing machine |
+| Type-2  | context-free           | Non-deterministic pushdown automaton            |
+| Type-3  | regular                | Finite state automaton                          |
 
 > 上下文无关语言为大多数程序设计语言的语法提供了理论基础
 
@@ -58,22 +72,25 @@
 ## 形式语言的分类
 
 - 按用途划分
+
 1. `数据描述语言` html css
 1. `编程语言` javascript
 
 - 按表达方式
+
 1. `命令式语言` 关注过程 js(oop)
 1. `声明式语言` 关注结果 js(fp)
 
 ### 图灵完备性
 
-<img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg1.wikia.nocookie.net%2F__cb20060714193405%2Fpsychology%2Fimages%2F5%2F57%2FAlan_Turing.jpg&f=1&nofb=1" width="50" /> 
+<img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg1.wikia.nocookie.net%2F__cb20060714193405%2Fpsychology%2Fimages%2F5%2F57%2FAlan_Turing.jpg&f=1&nofb=1" width="50" />
 
 > 具备图灵完备性的语言可以描述所有可计算的问题
 
 实现方式
+
 - 命令式(图灵机) if while
-- 声明式(lambda演算) recursion
+- 声明式(lambda 演算) recursion
 
 ### 动态与静态
 
@@ -106,27 +123,101 @@
 ### Atom
 
 grammar
-- literal 
+
+- literal
 - variable
 - keywords
 - whitespace
 - line terminator
 
 runtime
+
 - types
 - execution context
 
+## 基本类型
+
 `Number`
 
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/Double-Precision-IEEE-754-Floating-Point-Standard-1024x266.jpg" width="500" />
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/Double-Precision-IEEE-754-Floating-Point-Standard-1024x266.jpg" width="550" />
 
 `String`
 
 - 字符集
-  - ASCII
-  - Unicode
+  - ASCII 127 个字符
+  - Unicode 分配片区
+  - UCS
+  - GB 国标 不兼容 Unicode 省空间
+    - GB2312 第一个版本
+    - GBK(GB13000)
+    - GB18030 大全版本
+  - ISO-8859 东欧
+  - BIG5 大五码 台湾
 - 码点
 - 编码方式
   - UTF
-    - 一个字节
-    - 两个字节
+    - UTF-8 一个字节表示一个字符 兼容 ASCII 码
+    - UTF-16 两个字节表示一个字符
+
+模板语法解析
+
+- `s${
+- }s${
+- }s`
+
+在引擎看来变量反而是暴露出来的
+
+还可以作为一种语言让函数去处理
+
+`Boolean`
+
+- 形而上学
+
+`Null`
+
+- 只有 1 个值就是他本身
+
+`Undefined`
+
+- 是全局变量, 不是关键字
+
+- 用`void`关键字产生 undefined 比较安全
+
+`Object`
+
+- 类是一种常见的描述对象的方式
+
+- 归类(自下向上, 多继承)和分类(自上而下, 单继承)
+
+- 设计对象状态和行为时, 不应该受到语言描述的干扰, 总是遵循"行为改变状态的原则"
+
+- prototype(在原型链上一直找到最上面的原型)
+
+  - 不做严谨的分类, 采用相似的方式去描述对象
+  - 任何对象只需要描述自己与原型的区别即可
+  - 适合比较自由的场景
+
+- js 对象中的属性既可以描述状态也可以描述行为, 用内存地址展现对象的唯一性
+
+- 属性
+
+  - key 的类型 String 或者 Symbol
+  - value 的形态 数据属性(状态或行为)和访问器属性(行为)
+
+- Api/Grammar
+
+  - `{}` `.` `[]` `defineProperty` 提供了基本的对象机制, 可以创建对象, 访问属性和定义新的属性以及改变属性的特征值(基本的面向对象能力)
+  - `create` `setPrototypeOf` `getPrototypeOf` 基于原型的描述对象的方法
+  - `new` `class` `extends` 以基于分类的方式去描述对象
+  - `new` `function` `prototype` es3
+
+- function(function type)
+
+  - 带 \[[call]](内置的行为, js 中无法访问, 引擎中可以调用)的对象
+  - 没有 setPrototypeOf 方法
+
+- host object(not native)
+
+`Symbol`
+
+- 唯一性(除 Symbol.for('desc')可共享)
