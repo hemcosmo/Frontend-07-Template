@@ -124,22 +124,32 @@
 
 grammar
 
-- literal
-- variable
-- keywords
+- literal primitive values and objects
+- variable store information
+- keywords reserved keywords
 - whitespace
-- line terminator
+- line terminator \r\n
 
 runtime
 
 - types
-- execution context
+- `execution context` everything in js happens inside it(two phases: creation and execution)
+  - this
+  - variable object
+  - scope chain
 
 ## 基本类型
 
 `Number`
 
 <img src="https://media.geeksforgeeks.org/wp-content/uploads/Double-Precision-IEEE-754-Floating-Point-Standard-1024x266.jpg" width="550" />
+
+- uncommon case
+
+  - NaN !== NaN
+  - -0 === 0
+
+- 位运算 64 位先转换成 32 位再进行运算, 最后把运算结果转换成 64 位 `~1 === -2`
 
 `String`
 
@@ -177,6 +187,8 @@ runtime
 
 - 只有 1 个值就是他本身
 
+- `typeof(null) === 'object'`
+
 `Undefined`
 
 - 是全局变量, 不是关键字
@@ -204,7 +216,7 @@ runtime
   - key 的类型 String 或者 Symbol
   - value 的形态 数据属性(状态或行为)和访问器属性(行为)
 
-- Api/Grammar
+- api/grammar
 
   - `{}` `.` `[]` `defineProperty` 提供了基本的对象机制, 可以创建对象, 访问属性和定义新的属性以及改变属性的特征值(基本的面向对象能力)
   - `create` `setPrototypeOf` `getPrototypeOf` 基于原型的描述对象的方法
