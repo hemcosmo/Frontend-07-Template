@@ -13,9 +13,9 @@ expressions h -> l
 - f\`s` s: string -> Array(s)
 
 ```javascript
-const log = (val) => console.log(val);
+const log = (val) => console.log(val)
 
-log`🐇`; // ["🐇"]
+log`🐇` // ["🐇"]
 ```
 
 - super.b
@@ -181,7 +181,7 @@ javascipt 在运行时用引用类型来处理写相关的操作(delete, assign)
 1. debugger `debugger;` break point
 1. throw
 1. continue 跳过当次循环
-1. break 跳出整个循环 [label]
+1. break 跳出整个循环 label
 1. return
 
 - 复合语句
@@ -267,8 +267,4 @@ js 的执行粒度(运行时)
 
 - realm
 
-  在一个引擎实例里所有的内置对象会放到一个 realm 里, 在不同的 realm 实例之间, 他们完全互相独立(instanceof 可能会失效), 函数表达式和对象直接量均会创建对象, 使用`.`做隐式转换也会创建对象, 这些对象也是有原型的, 如果没有 realm, 就不知道他们的原型是什么
-
-## 小总结
-
-个人拙见
+在一个引擎实例里所有的内置对象会放到一个 realm 里, 在不同的 realm 实例之间, 他们完全互相独立(instanceof 可能会失效), 函数表达式和对象直接量均会创建对象, 使用`.`做隐式转换也会创建对象, 这些对象也是有原型的, 如果没有 realm, 就不知道他们的原型是什么

@@ -1,425 +1,426 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <title>Realm</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    name="viewport">
-  <meta content="ie=edge" http-equiv="X-UA-Compatible">
-  <title>Realm</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      body {
+        width: 100vw;
+        height: 100vh;
+        background-color: #00203f;
+      }
 
-    body {
-      width: 100vw;
-      height: 100vh;
-      background-color: #00203f;
-    }
+      #container {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        place-content: center;
+      }
+    </style>
+  </head>
 
-    #container {
-      height: 100%;
-      width: 100%;
-      display: grid;
-      place-content: center;
-    }
-  </style>
-</head>
+  <body>
+    <div id="container"></div>
+    <script src="https://gw.alipayobjects.com/os/lib/antv/g6/3.7.1/dist/g6.min.js"></script>
+    <script>
+      const data = {
+        label: 'Realm',
+        children: [
+          {
+            label: 'Value properties',
+            children: [
+              {
+                label: 'Infinity',
+              },
+              {
+                label: 'NaN',
+              },
+              {
+                label: 'undefined',
+              },
+              {
+                label: 'globalThis',
+              },
+            ],
+          },
+          {
+            label: 'Fundamental objects',
+            children: [
+              {
+                label: 'Object',
+              },
+              {
+                label: 'Function',
+              },
+              {
+                label: 'Boolean',
+              },
+              {
+                label: 'Symbol',
+              },
+            ],
+          },
+          {
+            label: 'Function properties',
+            children: [
+              {
+                label: 'eval()',
+              },
+              {
+                label: 'uneval()',
+              },
+              {
+                label: 'isFinite()',
+              },
+              {
+                label: 'isNaN()',
+              },
+              {
+                label: 'parseFloat()',
+              },
+              {
+                label: 'parseInt()',
+              },
+              {
+                label: 'decodeURI()',
+              },
+              {
+                label: 'decodeURIComponent()',
+              },
+              {
+                label: 'encodeURI()',
+              },
+              {
+                label: 'encodeURIComponent()',
+              },
+            ],
+          },
+          {
+            label: 'Error objects',
+            children: [
+              {
+                label: 'Error',
+              },
+              {
+                label: 'AggregateError',
+              },
+              {
+                label: 'EvalError',
+              },
+              {
+                label: 'InternalError',
+              },
+              {
+                label: 'RangeError',
+              },
+              {
+                label: 'ReferenceError',
+              },
+              {
+                label: 'SyntaxError',
+              },
+              {
+                label: 'TypeError',
+              },
+              {
+                label: 'URIError',
+              },
+            ],
+          },
+          {
+            label: 'Numbers and dates',
+            children: [
+              {
+                label: 'Number',
+              },
+              {
+                label: 'BigInt',
+              },
+              {
+                label: 'Math',
+              },
+              {
+                label: 'Date',
+              },
+            ],
+          },
+          {
+            label: 'Text processing',
+            children: [
+              {
+                label: 'String',
+              },
+              {
+                label: 'RegExp',
+              },
+            ],
+          },
+          {
+            label: 'Indexed collections',
+            children: [
+              {
+                label: 'Array',
+              },
+              {
+                label: 'Int8Array',
+              },
+              {
+                label: 'Uint8Array',
+              },
+              {
+                label: 'Uint8ClampedArray',
+              },
+              {
+                label: 'Int16Array',
+              },
+              {
+                label: 'Uint16Array',
+              },
+              {
+                label: 'Int32Array',
+              },
+              {
+                label: 'Uint32Array',
+              },
+              {
+                label: 'Float32Array',
+              },
+              {
+                label: 'Float64Array',
+              },
+              {
+                label: 'BigInt64Array',
+              },
+              {
+                label: 'BigUint64Array',
+              },
+            ],
+          },
+          {
+            label: 'Keyed collections',
+            children: [
+              {
+                label: 'Map',
+              },
+              {
+                label: 'Set',
+              },
+              {
+                label: 'WeakMap',
+              },
+              {
+                label: 'WeakSet',
+              },
+            ],
+          },
+          {
+            label: 'Structured data',
+            children: [
+              {
+                label: 'ArrayBuffer',
+              },
+              {
+                label: 'SharedArrayBuffer',
+              },
+              {
+                label: 'Atomics',
+              },
+              {
+                label: 'DataView',
+              },
+              {
+                label: 'JSON',
+              },
+            ],
+          },
+          {
+            label: 'Control abstraction objects',
+            children: [
+              {
+                label: 'Promise',
+              },
+              {
+                label: 'Generator',
+              },
+              {
+                label: 'GeneratorFunction',
+              },
+              {
+                label: 'AsyncFunction',
+              },
+            ],
+          },
+          {
+            label: 'Reflection',
+            children: [
+              {
+                label: 'Reflect',
+              },
+              {
+                label: 'Proxy',
+              },
+            ],
+          },
+          {
+            label: 'Internationalization',
+            children: [
+              {
+                label: 'Intl',
+              },
+              {
+                label: 'Intl.Collator',
+              },
+              {
+                label: 'Intl.DateTimeFormat',
+              },
+              {
+                label: 'Intl.ListFormat',
+              },
+              {
+                label: 'Intl.NumberFormat',
+              },
+              {
+                label: 'Intl.PluralRules',
+              },
+              {
+                label: 'Intl.RelativeTimeFormat',
+              },
+              {
+                label: 'Intl.Locale',
+              },
+            ],
+          },
+          {
+            label: 'WebAssembly',
+            children: [
+              {
+                label: 'WebAssembly',
+              },
+              {
+                label: 'WebAssembly.Module',
+              },
+              {
+                label: 'WebAssembly.Instance',
+              },
+              {
+                label: 'WebAssembly.Memory',
+              },
+              {
+                label: 'WebAssembly.Table',
+              },
+              {
+                label: 'WebAssembly.CompileError',
+              },
+              {
+                label: 'WebAssembly.LinkError',
+              },
+              {
+                label: 'WebAssembly.RuntimeError',
+              },
+            ],
+          },
+          {
+            label: 'Other',
+            children: [
+              {
+                label: 'arguments',
+              },
+            ],
+          },
+        ],
+      }
 
-<body>
-  <div id="container"></div>
-  <script src="https://gw.alipayobjects.com/os/lib/antv/g6/3.7.1/dist/g6.min.js"></script>
-  <script>
-    const data = {
-      label: "Realm",
-      children: [
-        {
-          label: "Value properties",
-          children: [
+      const graph = new G6.TreeGraph({
+        container: 'container',
+        width: window.innerWidth,
+        height: window.innerHeight,
+        fitView: true,
+        fitViewPadding: [20, 20, 20, 20],
+        modes: {
+          default: [
             {
-              label: "Infinity",
+              type: 'collapse-expand',
+              onChange(item, collapsed) {
+                const icon = item.get('group').findByClassName('collapse-icon')
+                if (collapsed) {
+                  icon.attr('symbol', EXPAND_ICON)
+                } else {
+                  icon.attr('symbol', COLLAPSE_ICON)
+                }
+              },
             },
-            {
-              label: "NaN",
-            },
-            {
-              label: "undefined",
-            },
-            {
-              label: "globalThis",
-            },
+            'drag-canvas',
+            'zoom-canvas',
           ],
         },
-        {
-          label: "Fundamental objects",
-          children: [
-            {
-              label: "Object",
-            },
-            {
-              label: "Function",
-            },
-            {
-              label: "Boolean",
-            },
-            {
-              label: "Symbol",
-            },
-          ],
-        },
-        {
-          label: "Function properties",
-          children: [
-            {
-              label: "eval()",
-            },
-            {
-              label: "uneval()",
-            },
-            {
-              label: "isFinite()",
-            },
-            {
-              label: "isNaN()",
-            },
-            {
-              label: "parseFloat()",
-            },
-            {
-              label: "parseInt()",
-            },
-            {
-              label: "decodeURI()",
-            },
-            {
-              label: "decodeURIComponent()",
-            },
-            {
-              label: "encodeURI()",
-            },
-            {
-              label: "encodeURIComponent()",
-            },
-          ],
-        },
-        {
-          label: "Error objects",
-          children: [
-            {
-              label: "Error",
-            },
-            {
-              label: "AggregateError",
-            },
-            {
-              label: "EvalError",
-            },
-            {
-              label: "InternalError",
-            },
-            {
-              label: "RangeError",
-            },
-            {
-              label: "ReferenceError",
-            },
-            {
-              label: "SyntaxError",
-            },
-            {
-              label: "TypeError",
-            },
-            {
-              label: "URIError",
-            },
-          ],
-        },
-        {
-          label: "Numbers and dates",
-          children: [
-            {
-              label: "Number",
-            },
-            {
-              label: "BigInt",
-            },
-            {
-              label: "Math",
-            },
-            {
-              label: "Date",
-            },
-          ],
-        },
-        {
-          label: "Text processing",
-          children: [
-            {
-              label: "String",
-            },
-            {
-              label: "RegExp",
-            },
-          ],
-        },
-        {
-          label: "Indexed collections",
-          children: [
-            {
-              label: "Array",
-            },
-            {
-              label: "Int8Array",
-            },
-            {
-              label: "Uint8Array",
-            },
-            {
-              label: "Uint8ClampedArray",
-            },
-            {
-              label: "Int16Array",
-            },
-            {
-              label: "Uint16Array",
-            },
-            {
-              label: "Int32Array",
-            },
-            {
-              label: "Uint32Array",
-            },
-            {
-              label: "Float32Array",
-            },
-            {
-              label: "Float64Array",
-            },
-            {
-              label: "BigInt64Array",
-            },
-            {
-              label: "BigUint64Array",
-            },
-          ],
-        },
-        {
-          label: "Keyed collections",
-          children: [
-            {
-              label: "Map",
-            },
-            {
-              label: "Set",
-            },
-            {
-              label: "WeakMap",
-            },
-            {
-              label: "WeakSet",
-            },
-          ],
-        },
-        {
-          label: "Structured data",
-          children: [
-            {
-              label: "ArrayBuffer",
-            },
-            {
-              label: "SharedArrayBuffer",
-            },
-            {
-              label: "Atomics",
-            },
-            {
-              label: "DataView",
-            },
-            {
-              label: "JSON",
-            },
-          ],
-        },
-        {
-          label: "Control abstraction objects",
-          children: [
-            {
-              label: "Promise",
-            },
-            {
-              label: "Generator",
-            },
-            {
-              label: "GeneratorFunction",
-            },
-            {
-              label: "AsyncFunction",
-            },
-          ],
-        },
-        {
-          label: "Reflection",
-          children: [
-            {
-              label: "Reflect",
-            },
-            {
-              label: "Proxy",
-            },
-          ],
-        },
-        {
-          label: "Internationalization",
-          children: [
-            {
-              label: "Intl",
-            },
-            {
-              label: "Intl.Collator",
-            },
-            {
-              label: "Intl.DateTimeFormat",
-            },
-            {
-              label: "Intl.ListFormat",
-            },
-            {
-              label: "Intl.NumberFormat",
-            },
-            {
-              label: "Intl.PluralRules",
-            },
-            {
-              label: "Intl.RelativeTimeFormat",
-            },
-            {
-              label: "Intl.Locale",
-            },
-          ],
-        },
-        {
-          label: "WebAssembly",
-          children: [
-            {
-              label: "WebAssembly",
-            },
-            {
-              label: "WebAssembly.Module",
-            },
-            {
-              label: "WebAssembly.Instance",
-            },
-            {
-              label: "WebAssembly.Memory",
-            },
-            {
-              label: "WebAssembly.Table",
-            },
-            {
-              label: "WebAssembly.CompileError",
-            },
-            {
-              label: "WebAssembly.LinkError",
-            },
-            {
-              label: "WebAssembly.RuntimeError",
-            },
-          ],
-        },
-        {
-          label: "Other",
-          children: [
-            {
-              label: "arguments",
-            },
-          ],
-        },
-      ],
-    };
-
-    const graph = new G6.TreeGraph({
-      container: "container",
-      width: window.innerWidth,
-      height: window.innerHeight,
-      fitView: true,
-      fitViewPadding: [20, 20, 20, 20],
-      modes: {
-        default: [{
-          type: 'collapse-expand',
-          onChange(item, collapsed) {
-            const icon = item.get('group').findByClassName('collapse-icon');
-            if (collapsed) {
-              icon.attr('symbol', EXPAND_ICON);
-            } else {
-              icon.attr('symbol', COLLAPSE_ICON);
-            }
+        layout: {
+          type: 'mindmap',
+          direction: 'H',
+          getWidth: (d) => {
+            return 20
+          },
+          getHeight: (d) => {
+            return 20
+          },
+          getHGap: (d) => {
+            return 20
+          },
+          getVGap: (d) => {
+            return 20
           },
         },
-          'drag-canvas',
-          'zoom-canvas',],
-      },
-      layout: {
-        type: "mindmap",
-        direction: "H",
-        getWidth: (d) => {
-          return 20;
-        },
-        getHeight: (d) => {
-          return 20;
-        },
-        getHGap: (d) => {
-          return 20;
-        },
-        getVGap: (d) => {
-          return 20;
-        }
-      },
-      defaultNode: {
-        type: "ellipse",
-        size: [100, 50],
-        style: {
-          fill: "#adefd1",
-          stroke: "#adefd1",
-          cursor: "pointer",
-        },
-        labelCfg: {
-          position: "center",
+        defaultNode: {
+          type: 'ellipse',
+          size: [100, 50],
           style: {
-            textAlign: "center",
-            fontStyle: "inherit",
-            fontSize: 6,
-            fill: "#00203f",
-            shadowOffsetX: 7,
-            rotate: 6.28,
-            opacity: 1,
+            fill: '#adefd1',
+            stroke: '#adefd1',
+            cursor: 'pointer',
           },
-          offset: 0,
+          labelCfg: {
+            position: 'center',
+            style: {
+              textAlign: 'center',
+              fontStyle: 'inherit',
+              fontSize: 6,
+              fill: '#00203f',
+              shadowOffsetX: 7,
+              rotate: 6.28,
+              opacity: 1,
+            },
+            offset: 0,
+          },
         },
-      },
-      defaultEdge: {
-        type: "cubic-vertical",
-        style: {
-          fill: '#8b5e83',
-          cursor: "default",
-        },
-        labelCfg: {
-          position: "middle",
+        defaultEdge: {
+          type: 'cubic-vertical',
           style: {
-            textAlign: "center",
-            textBaseline: "middle",
-            fontStyle: "normal",
+            fill: '#8b5e83',
+            cursor: 'default',
+          },
+          labelCfg: {
+            position: 'middle',
+            style: {
+              textAlign: 'center',
+              textBaseline: 'middle',
+              fontStyle: 'normal',
+            },
           },
         },
-      },
-    });
+      })
 
-    graph.data(data);
-    graph.render();
-
-  </script>
-</body>
-
+      graph.data(data)
+      graph.render()
+    </script>
+  </body>
 </html>
