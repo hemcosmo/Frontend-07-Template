@@ -1,3 +1,9 @@
+## Table of Contents
+
+- [grammar](#grammar)
+- [runtime](#runtime)
+- [个人拙见](#小总结)
+
 ## grammar
 
 tree vs priority
@@ -268,3 +274,44 @@ js 的执行粒度(运行时)
 - realm
 
 在一个引擎实例里所有的内置对象会放到一个 realm 里, 在不同的 realm 实例之间, 他们完全互相独立(instanceof 可能会失效), 函数表达式和对象直接量均会创建对象, 使用`.`做隐式转换也会创建对象, 这些对象也是有原型的, 如果没有 realm, 就不知道他们的原型是什么
+
+## 小总结
+
+个人拙见
+
+```javascript
+console.log(x)
+const z = y()
+var x = 0
+var p = (s) => console.log(s)
+function y() {
+  console.log('y is running...')
+  return 0
+}
+p(z)
+```
+
+phase1
+
+1. execution context[0] is created ...
+1. z: undefined is allocated inside script scope ...
+1. x: undefined is allocated ...
+1. p: undefined is allocated ...
+1. y: _f_ is allocated ...
+
+phase2
+
+1. console -> undefined <- x
+1. execution context[y] is created ...
+1. console -> y is running...
+1. execution context[y] pop up
+1. z: 0 <- y executed return is allocated ...
+1. x: 0 is allocated ...
+1. p: _f_ is allocated ...
+1. execution context[p] is created ...
+1. s: 0 is allocated inside local scope ...
+1. console -> 0
+1. execution context[p] pop up
+1. execution context[0] pop up
+
+<img src="assets/summary.png" width=500>
