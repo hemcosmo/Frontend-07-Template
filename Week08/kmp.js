@@ -43,8 +43,6 @@ const kmp = (s, p) => {
     } else return start(c)
   }
 
-  for (let i = 1; i < l; i++) {}
-
   function end() {
     return end
   }
