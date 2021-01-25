@@ -1,3 +1,7 @@
+/**
+ * @todo 需要修改, 每个状态机都需要是纯函数, 目前依赖了外部变量i
+ */
+
 const kmp = (s, p) => {
   const l = p.length,
     t = Array(l).fill(0)
@@ -38,6 +42,8 @@ const kmp = (s, p) => {
       return process
     } else return start(c)
   }
+
+  for (let i = 1; i < l; i++) {}
 
   function end() {
     return end

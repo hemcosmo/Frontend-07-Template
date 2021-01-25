@@ -1,10 +1,14 @@
+/**
+ * @todo state machine approach
+ */
+
 const net = require('net')
 
 class Request {
   constructor(options) {
     this.method = options.method || 'GET'
     this.host = options.host
-    this.port = options.port || 2021
+    this.port = options.port || '2021'
     this.path = options.path || '/'
     this.body = options.body || {}
     this.headers = options.headers || {}
@@ -58,9 +62,12 @@ class Request {
   }
 
   toString() {
-    return `${this.method} ${this.path} HTTP/1.1\r\n${Object.keys(this.headers)
-      .map((key) => `${key}: ${this.headers[key]}`)
-      .join('\r\n')}\r\n${this.bodyText}`
+    return `${this.method} ${this.path} HTTP/1.1\r
+${Object.keys(this.headers)
+  .map((key) => `${key}: ${this.headers[key]}`)
+  .join('\r\n')}\r
+\r
+${this.bodyText}`
   }
 }
 
