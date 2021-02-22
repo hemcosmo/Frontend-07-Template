@@ -97,4 +97,4 @@
 >
 > [W3C](https://www.w3.org/TR/CSS2/selector.html#first-line-pseudo)
 >
-> > The first formatted line of an element may occur inside a block-level descendant in the same flow (i.e., a block-level descendant that is not out-of-flow due to floating or positioning). For example, the first line of the DIV in `<DIV><P>This line...</P></DIV>` is the first line of the P (assuming that both P and DIV are block-level).
+> >
