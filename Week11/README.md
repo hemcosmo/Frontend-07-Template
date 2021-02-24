@@ -97,4 +97,16 @@
 >
 > [W3C](https://www.w3.org/TR/CSS2/selector.html#first-line-pseudo)
 >
+> > 没有得到确定答案, 只是猜想
 > >
+> > 思路是先比较两个伪元素的异同, 首先摘抄了两段话
+> >
+> > > 0️⃣ The "first formatted line" of an element may occur inside a block-level descendant in the same flow (i.e., a block-level descendant that is not positioned and not a float).
+> > >
+> > > 1️⃣ This type of initial letter is similar to an inline-level element if its 'float' property is 'none', otherwise it is similar to a floated element.
+> >
+> > 虽然和问题并不强相关但是从中隐约能感觉到有一些线索, 个人的理解 first-line 类似于对应 block-level, 而 first-letter 对应的是 inline-level, 虽然两者都不能作为 html 元素但是如果把 first-line 想象成是块级元素, 第一段话有提到需要和父元素处在同一个流, 即不能脱离正常的流, 因此不能 float, 另外 first-letter 的样式会覆盖 first-line 的样式, 也就是说 first-letter 也可以假定是 first-line 的子元素
+> >
+> > 再看回 first-line 可以使用的属性, 只能产生重绘, 不会触发回流, 限制了测量和计算, 或许也是因为第一行和第一个字很大的区别在于第一行很难确定, 但第一个字更容易确定
+> >
+> > 总结下来, 既然这两个伪元素都是对文本内容的处理, 所以可能说 first-line 更像是一个标准版的伪元素, 而因为 first-letter 更容易测量与计算所以对其做了一些拓展与加强, 是加强版的伪元素

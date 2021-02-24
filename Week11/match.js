@@ -39,7 +39,7 @@ function match(s, ele) {
     if (
       (val.includes('.') && _p.classList.contains(val.slice(1))) ||
       (val.includes('#') && _p.id === val.slice(1)) ||
-      _p.tagName === val
+      _p.tagName === val.toUpperCase()
     ) {
       _p = _p.parentNode
       cur = cur.next
