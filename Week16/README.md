@@ -38,3 +38,44 @@
 * gesture (touch and move) -o- 🐈 [zingtouch]
 * cubic bezier (use javascript)
 ```
+
+<details>
+
+<summary>lib</summary>
+
+- createElment
+
+```ts
+// createElement(type, attr, ...children)
+
+type Arguments = {
+  type: string | obj // string - native, obj - custom (import)
+  attr: obj // key-value pair
+  children: <Element>
+}
+
+// component
+
+const _ = {
+  state,
+  prop,
+  setProp,
+  appendChild,
+  mountParent,
+  // here 
+}
+
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
