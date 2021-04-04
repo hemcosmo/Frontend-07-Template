@@ -1,1 +1,1 @@
-学习笔记
+generator's generator yeoman
