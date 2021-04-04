@@ -62,7 +62,7 @@ const _ = {
   setProp,
   appendChild,
   mountParent,
-  // here 
+  trigger: CustomEvent
 }
 
 ```
