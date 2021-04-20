@@ -9,9 +9,11 @@ module.exports = {
       { test: /\.vue$/, use: 'vue-loader' },
       {
         test: /\.js$/,
-        use: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         },
       },
       {
