@@ -9,3 +9,7 @@ service ssh start
 # secure copy
 scp -P [port] -r ./* [[user@]host]:[path]
 ```
+
+- 流式传输
+
+![](assets/diagram.png)
