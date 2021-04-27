@@ -1,6 +1,11 @@
 let http = require('http')
 let fs = require('fs')
 let archiver = require('archiver')
+let child_process = require('child_process')
+
+child_process.exec(
+  `open https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`
+)
 
 // fs.stat('./sample.html', (err, stats) => {
 let request = http.request(

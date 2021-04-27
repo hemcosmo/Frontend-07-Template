@@ -17,7 +17,21 @@ scp -P [port] -r ./* [[user@]host]:[path]
 ![](assets/diagram.png)
 
 > 多文件 -> 压缩文件夹
+>
+> > 客户端压缩上传, 服务端解压
 
 - 鉴权
 
-> OAuth
+> github OAuth workflow
+
+- client
+
+1. open url `/authorize`
+
+2. create server -> receive token -> click to publish
+
+- server
+
+1. auth route -> receive code -- `code+client_id+client_secret` -> token
+
+2. \*publish route -> token -> user info -> authentication
