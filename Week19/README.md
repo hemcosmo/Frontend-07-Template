@@ -12,4 +12,12 @@ scp -P [port] -r ./* [[user@]host]:[path]
 
 - 流式传输
 
+> 文件 -> http -> 文件
+
 ![](assets/diagram.png)
+
+> 多文件 -> 压缩文件夹
+
+- 鉴权
+
+> OAuth

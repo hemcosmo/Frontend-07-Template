@@ -1,6 +1,8 @@
 let http = require('http')
 let fs = require('fs')
+let archiver = require('archiver')
 
+// fs.stat('./sample.html', (err, stats) => {
 let request = http.request(
   {
     hostname: '127.0.0.1',
@@ -8,6 +10,7 @@ let request = http.request(
     method: 'POST',
     headers: {
       'Content-Type': 'application/octet-stream',
+      // 'Content-Length': stats.size,
     },
   },
   (response) => {
@@ -17,14 +20,15 @@ let request = http.request(
 
 let file = fs.createReadStream('./sample.html')
 
-file.on('data', (chunk) => {
-  console.log(chunk.toString())
-  request.write(chunk)
+const archive = archiver('zip', {
+  zlib: { level: 9 },
 })
 
-file.on('end', (chunk) => {
-  console.log('read finished')
-  request.end(chunk)
-})
+archive.directory('./sample', false)
+archive.finalize()
 
-request.end()
+archive.pipe(request)
+
+// file.pipe(request)
+// file.on('end', () => request.end())
+// })
