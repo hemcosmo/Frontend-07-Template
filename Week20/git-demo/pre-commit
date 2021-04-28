@@ -1,0 +1,7 @@
+# 标注执行脚本
+#! /path/to/env node
+
+const process = require('process')
+
+# 阻止提交
+process.exitCode = 1
