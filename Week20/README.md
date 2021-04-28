@@ -9,7 +9,7 @@
 
   - 提交前 build
   - 开发周期以周计
-  - 端到端测试 -> `eslint` + `phantomjs`
+  - 端到端测试 -> `eslint` + `headless chrome`
 
 ```bash
 # workflow
@@ -22,7 +22,7 @@ headless_browser>dom_tree<check
 
 2. [eslint](#eslint)
 
-3. [phantomjs](#phantomjs)
+3. [headless chrome](#headless-chrome)
 
 ### githook
 
@@ -41,3 +41,25 @@ chmod +x [hook]
 
 - client pre-commit(lint) pre-push(final check)
 - server pre-receive
+
+### eslint
+
+[link](https://eslint.org/)
+
+```bash
+# initialize config file
+npx eslint --init
+```
+
+- linter 检查 stage 的版本
+
+```bash
+# keep index
+git stash -k
+```
+
+### headless chrome
+
+[link](https://developers.google.com/web/updates/2017/04/headless-chrome)
+
+[puppeteer](https://pptr.dev/)
