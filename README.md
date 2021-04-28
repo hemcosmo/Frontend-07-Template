@@ -25,53 +25,69 @@
 <details>
   <summary>1. 🛹 algorithm</summary>
 
-</details>
+- path finding
+- ll
+- kmp
+- wildcard
 
-<br />
+</details>
 
 <details>
   <summary>2. 🟡 javascript</summary>
 
-</details>
+- ❤️
 
-<br />
+</details>
 
 <details>
   <summary>3. 🌐 browser</summary>
 
-</details>
+- mealy state machine
+- http
+- html parse
+- css compute
 
-<br />
+</details>
 
 <details>
   <summary>4. 🔵 css</summary>
 
-</details>
+- rule
+- layout
 
-<br />
+</details>
 
 <details>
   <summary>5. 🔴 html</summary>
 
-</details>
+- tag
+- dom api
 
-<br />
+</details>
 
 <details>
   <summary>6. 📦 componentization</summary>
 
-</details>
+- lib
 
-<br />
+</details>
 
 <details>
   <summary>7. 🧰 toolchain</summary>
 
-</details>
+- yeoman
+- webpack
+- babel
+- unit test
 
-<br />
+</details>
 
 <details>
   <summary>8. 🚀 publish</summary>
+
+- publish system
+- git hooks
+- eslint
+- headless chrome
 
 </details>
